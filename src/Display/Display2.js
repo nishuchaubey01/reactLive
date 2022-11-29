@@ -18,7 +18,7 @@ class Display extends React.Component{
 
           <>
 
-       <h1 className=' mt-5 text-center main-heading'>Artikel Image</h1>
+      <h1 className=' mt-5 text-center main-heading'>Artikel Image</h1>
       <label>Enter Artikel : </label>
       <input type= "search" placeholder='style number' ></input>
       <button  type='button' className='btn btn-warning'>click here</button>
