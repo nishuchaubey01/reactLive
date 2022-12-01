@@ -1,72 +1,155 @@
 import React, { useState } from "react";
 import "./Display.css";
+import Menu from "./Menu";
 
 const Display1 = () => {
-  const Menu = [
-    // { style: "1", name: "RUNDHALS DOPPELPACK " },
-    // { style: "2", name: "red denim shirt " },
-    // { style: "3", name: " DOPPELPACK " },
-    // { style: "4", name: " DOPPELPACK " },
-    // { style: "204321E", name: "RUNDHALS DOPPELPACK " },
-    // { style: "red", name: "RUNDHALS DOPPELPACK " },
-    // { style: "white", name: "RUNDHALS DOPPELPACK " },
-    // { style: "7", name: "RUNDHALS DOPPELPACK " },
-    {style: "1", "des":"O-NECK CHEST PRINT", "txt01":"J-02-007", "siztxt":"  S    M    L   XL  XXL XXXL", "size":"  X    X    X    X    X    X", "ek":"6,52", "vk":"15,99", "wgr":"K12 T-SHIRT/SERAFI", "prdgrp":"D4  FRONTPRINT","fbg":"01 100%CO","obst":"","ftst":"","flst":"","kw":"KNITTED"} ,
-
-    {style: "2", "des":"V-NECK SOLID ", "txt01":"J-02-007", "siztxt":"  S    M    L   XL  XXL XXXL", "siz":"  X    X    X    X    X    X","ek":"8,17","vk":"19,99","wgr":"K12 T-SHIRT/SERAFI","prdgrp":"D0  SOLID","fbg":"01 100%CO","obst":"","ftst":"","flst":"","kw":"KNITTED"}                                                    
-
-  ];
+ 
 
   const [id, setId] = useState("");
-  // const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
 
   const inputsHandler = (e) => {
     setId(e.target.value);
   };
 
-  // const submit = () => {
-  //   setImage(id);
-  // };
-  const style = Menu.find((item) => item.style === id);
+  const submit = () => {
+    setImage(id);
+  };
+  const style = Menu.find((item) => item.style.trimEnd(' ') === image);
 
-  // const style = Menu.find((item) =>{
-  //   if(item.style !== id) {
-  //     return
-  //      <img src="/IMAGES/1.jpg"/>
-  //   }
-
+  
+  // console.log(style);
+  
   return (
     <>
-      <h1 className=" mt-5 text-center main-heading">Artikel Image</h1>
-      <label>Enter Artikel : </label>
+    
+
+      <form className="form-control">
+      <label className="label">Enter Artikel : 
       <input
         type="search"
         placeholder="#style number"
-        onChange={inputsHandler}
+        onChange={(e) => inputsHandler(e)}
       ></input>
-      <button
-        type="button"
-        className="btn btn-warning"
-        //  onClick={submit}
-      >
-        click here
-      </button>
-      <hr />
-      <p>
-         {style?.style}
-      </p>
-        <table>
-        <caption>T-SHIRT RUNDHALS:</caption>
-        </table>
-      <img
-        src={process.env.PUBLIC_URL + `/IMAGES/${id}.jpg`}
-        alt="images"
-        height={300}
-      />
+      </label>
+      <input type="Button" id="search-btn" value="Submit" onClick={submit} />
+       </form>
+   
 
+     
+       
+       <div id="main-content">
+        <div>
+          {style && (
+            <div id="div-left">
+              <table>
+                <caption> {style.des}</caption>
+                <tr>
+                  <th>Artikel:</th>
+                  <td>{style.style.des }</td>
+                </tr>
+                <tr>
+              <th>Desc:</th>
+              <td>{style.des}</td>
+            </tr> 
+
+                <tr>
+                  <th>Sea-Div-Koll</th>
+                  <td>{style.txt01}</td>
+                </tr>
+                <tr>
+                  <th>Sizes</th>
+                  <td>{style.siztxt}</td>
+                </tr>
+                <tr>
+                  <th>Valid Sizes</th>
+                  <td>{style.siz}</td>
+                </tr>
+                <tr>
+                  <th>Ek Preis</th>
+                  <td>{style.ek}</td>
+                </tr>
+                <tr>
+                  <th>Vk Preis</th>
+                  <td>{style.vk}</td>
+                </tr>
+                <tr>
+                  <th>Warrengruppe</th>
+                  <td>{style.wgr}</td>
+                </tr>
+                <tr>
+                  <th>Produktgruppe</th>
+                  <td>{style.prdgrp}</td>
+                </tr>
+                <tr>
+                  <th>Fabricgruppe</th>
+                  <td>{style.fbg}</td>
+                </tr>
+                <tr>
+                  <th>Oberstoff</th>
+                  <td>{style.obst}</td>
+                </tr>
+                <tr>
+                  <th>Futterstoff</th>
+                  <td>{style.ftst}</td>
+                </tr>
+                <tr>
+                  <th>Fullung</th>
+                  <td>{style.flst}</td>
+                </tr>
+                <tr>
+                  <th>Weaving/Knitting</th>
+                  <td>{style.kw}</td>
+                </tr>
+              </table>
+            </div>
+          )}
+        </div> 
+
+        <div>
+          <div className="img-wrapper">
+
+             {/* {(!id && !image) && <div>show img3</div>} */}
+               {/* {(id && style) &&<div><img
+              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
+              alt="images"
+              height={350}
+              width={300}
+              className="hover-zoom" /></div>}
+              
+              {(!id && style) &&<div><img
+              src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
+              alt="images"
+              height={350}
+              width={300}
+              className="hover-zoom" /></div>}
+               */}
+
+
+             {/* {(!id && style)<div><img
+            src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
+            alt="images"
+            height={350}
+            width={300}  /> }</div> */}
+             {  style
+            ?<img
+              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
+              alt="images"
+              height={350}
+              width={300}
+              className="hover-zoom"
+            />  : <img
+            src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
+            alt="images"
+            height={350}
+            width={300} />} 
+          </div> 
+        </div>
+      </div>
       {/* <p> {id?<p> {style?.name}</p> :  NO such style number exist }</p> */}
     </>
   );
 };
+
 
 export default Display1;

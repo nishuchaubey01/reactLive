@@ -1,46 +1,70 @@
-import React from 'react';
+import React, { useState } from "react";
+import "./Display.css";
 
 
-// import ReactDOM from 'react-dom';
-var listOfImages =[];
-
-class Display extends React.Component{
+const Display1 = () => {
 
 
+  const [id, setId] = useState("");
+  const [image, setImage] = useState("");
+
+  const inputsHandler = (e) => {
+    setId(e.target.value);
+  };
+
+  const submit = () => {
+ if (!id) return 
+            <img
+              src={`/IMAGES/err.jpg`}
+              alt="images"
+              height={450}
+              width={350}
+              className="hover-zoom"
+            />
+   setImage(id);
+  };
+ 
+
+  
+
+//   console.log(style);
+  
+  return (
+    <>
    
-    
-    importAll(r){
-       var index= `./IMAGE/${index}.jpg` ;
-        return r.keys().filter(r==index);
-    }
-    componentWillMount() {
-        listOfImages = this.importAll(require.context( `./IMAGE/${index}.jpg`, false, /\.(png|jpe?g|svg)$/));
-    }
-    render(){
-        return(
 
-          <>
-
-       <h1 className=' mt-5 text-center main-heading'>Artikel Image</h1>
+      <div id></div>
       <label>Enter Artikel : </label>
-      <input type= "search" placeholder='#Artikel No.' 
-      //  value={this.state.id}
-      //  onChange={this.onInputChange}
+      <input
+        type="search"
+        placeholder="#style number"
+        onChange={inputsHandler}
       ></input>
-      <button  type='button' className='btn btn-warning' >click here</button>
-      <hr/>
-          <div>
-              
-                   {
-                    listOfImages.map(
-                      (image, index) =>    <img key={index} src={image} alt="info"   height={300} width={250}></img>
-                    )
-              }
-              
-          </div>
-          </>
-        )
-    }
-  }
 
-export default Display;
+      <button type="button" className="btn btn-warning" onClick={submit}>
+        click here
+      </button>
+      <hr />
+
+
+        
+
+        <div>
+          <div className="img-wrapper">
+            <img
+              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
+              alt="images"
+              height={450}
+              width={350}
+              className="hover-zoom"
+            />
+            </div>
+            </div>
+         </>
+
+     
+  );
+};
+
+
+export default Display1;
