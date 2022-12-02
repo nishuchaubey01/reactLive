@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import "./Display.css";
 import Menu from "./Menu";
-
 const Display1 = () => {
  
 
   const [id, setId] = useState("");
   const [image, setImage] = useState("");
+  // _style because style is blocked scoped
+  const [_style,setStyle] = useState();
 
   const inputsHandler = (e) => {
     setId(e.target.value);
   };
 
-  const submit = () => {
+  const submit = async () => {
     setImage(id);
+    const _style1 = Menu.find((item) => item.style.trimEnd() === id);
+    if (_style1)
+      setStyle(_style1);
+    else {
+      alert('Style not found!')
+      setStyle();
+    }    
   };
-  const style = Menu.find((item) => item.style.trimEnd(' ') === image);
+
+
+  const errorHandler = () => {
+    // alert('Image not found');
+    setImage('err');
+  }
 
   
   // console.log(style);
@@ -40,66 +53,66 @@ const Display1 = () => {
        
        <div id="main-content">
         <div>
-          {style && (
+          {_style && (
             <div id="div-left">
               <table>
-                <caption> {style.des}</caption>
+                <caption> {_style.des}</caption>
                 <tr>
                   <th>Artikel:</th>
-                  <td><p>{style.style }  <span>{style.des} </span> </p></td>
+                  <td>{_style.style }</td>
                 </tr>
-                {/* <tr>
+                <tr>
               <th>Desc:</th>
-              <td>{style.des}</td>
-            </tr>  */}
+              <td>{_style.des}</td>
+            </tr> 
 
                 <tr>
                   <th>Sea-Div-Koll</th>
-                  <td>{style.txt01}</td>
+                  <td>{_style.txt01}</td>
                 </tr>
                 <tr>
                   <th>Sizes</th>
-                  <td>{style.siztxt}</td>
+                  <td>{_style.siztxt}</td>
                 </tr>
                 <tr>
                   <th>Valid Sizes</th>
-                  <td>{style.siz}</td>
+                  <td>{_style.siz}</td>
                 </tr>
                 <tr>
                   <th>Ek Preis</th>
-                  <td>{style.ek}</td>
+                  <td>{_style.ek}</td>
                 </tr>
                 <tr>
                   <th>Vk Preis</th>
-                  <td>{style.vk}</td>
+                  <td>{_style.vk}</td>
                 </tr>
                 <tr>
                   <th>Warrengruppe</th>
-                  <td>{style.wgr}</td>
+                  <td>{_style.wgr}</td>
                 </tr>
                 <tr>
                   <th>Produktgruppe</th>
-                  <td>{style.prdgrp}</td>
+                  <td>{_style.prdgrp}</td>
                 </tr>
                 <tr>
                   <th>Fabricgruppe</th>
-                  <td>{style.fbg}</td>
+                  <td>{_style.fbg}</td>
                 </tr>
                 <tr>
                   <th>Oberstoff</th>
-                  <td>{style.obst}</td>
+                  <td>{_style.obst}</td>
                 </tr>
                 <tr>
                   <th>Futterstoff</th>
-                  <td>{style.ftst}</td>
+                  <td>{_style.ftst}</td>
                 </tr>
                 <tr>
                   <th>Fullung</th>
-                  <td>{style.flst}</td>
+                  <td>{_style.flst}</td>
                 </tr>
                 <tr>
                   <th>Weaving/Knitting</th>
-                  <td>{style.kw}</td>
+                  <td>{_style.kw}</td>
                 </tr>
               </table>
             </div>
@@ -131,18 +144,33 @@ const Display1 = () => {
             alt="images"
             height={350}
             width={300}  /> }</div>  */}
-             {  style || !image
-            ?<img
-              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
-              alt="images"
-              height={350}
-              width={300}
-              className="hover-zoom"
-            />  : <img
+             {/* ( !id  || !image) || ( !style==image ) */}
+             {/* !id ||!image || !style    ------   getting image  and description on matching , but not on 
+                                           when id is not in folder and it exists in  menu  , then not getting  error image 
+             */}
+
+             {!( image &&_style)
+            ? <img
             src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
             alt="images"
             height={350}
-            width={300} />} 
+            width={300} />
+
+             : <img
+             
+             src={ `/////BLADEW3KSVR06/Bilder/${image}.jpg`}
+             alt="images"
+             height={350}
+             width={300} 
+             onError={errorHandler}/>} 
+
+
+
+            {/* {(!id && !image) && <div><img
+            src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
+            alt="images"
+            height={350}
+            width={300} /></div>}  */}
           </div> 
         </div>
       </div>
@@ -154,4 +182,3 @@ const Display1 = () => {
 
 
 export default Display1;
-
