@@ -46,12 +46,12 @@ const Display1 = () => {
                 <caption> {style.des}</caption>
                 <tr>
                   <th>Artikel:</th>
-                  <td>{style.style }</td>
+                  <td><p>{style.style }  <span>{style.des} </span> </p></td>
                 </tr>
-                <tr>
+                {/* <tr>
               <th>Desc:</th>
               <td>{style.des}</td>
-            </tr> 
+            </tr>  */}
 
                 <tr>
                   <th>Sea-Div-Koll</th>
@@ -131,32 +131,18 @@ const Display1 = () => {
             alt="images"
             height={350}
             width={300}  /> }</div>  */}
-             {/* ( !id  || !image) || ( !style==image ) */}
-             {/* !id ||!image || !style    ------   getting image  and description on matching , but not on 
-                                           when id is not in folder and it exists in  menu  , then not getting  error image 
-             */}
-
-             {( !image || !style)
-            ? <img
+             {  style || !image
+            ?<img
+              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
+              alt="images"
+              height={350}
+              width={300}
+              className="hover-zoom"
+            />  : <img
             src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
             alt="images"
             height={350}
-            width={300} />
-
-             : <img
-             
-             src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
-             alt="images"
-             height={350}
-             width={300} />} 
-
-
-
-            {/* {(!id && !image) && <div><img
-            src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
-            alt="images"
-            height={350}
-            width={300} /></div>}  */}
+            width={300} />} 
           </div> 
         </div>
       </div>
@@ -168,3 +154,4 @@ const Display1 = () => {
 
 
 export default Display1;
+

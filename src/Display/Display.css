@@ -21,7 +21,11 @@ input {
  border-color:  brown;
 }
 
+p{
 
+  text-align: left;
+  margin-left: -10px;
+}
 /* #div-right {
   display: -webkit-box;
 
