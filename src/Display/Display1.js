@@ -56,15 +56,15 @@ const Display1 = () => {
           {_style && (
             <div id="div-left">
               <table>
-                <caption> {_style.des}</caption>
+                {/* <caption> {_style.des}</caption> */}
                 <tr>
                   <th>Artikel:</th>
-                  <td>{_style.style }</td>
+                  <td><p>{_style.style } <span>{_style.des}</span></p></td>
                 </tr>
-                <tr>
+                {/* <tr>
               <th>Desc:</th>
               <td>{_style.des}</td>
-            </tr> 
+            </tr>  */}
 
                 <tr>
                   <th>Sea-Div-Koll</th>
@@ -158,7 +158,7 @@ const Display1 = () => {
 
              : <img
              
-             src={ `/////BLADEW3KSVR06/Bilder/${image}.jpg`}
+             src={ `file://///BLADEW3KSVR06/Bilder/${image}.jpg`}
              alt="images"
              height={350}
              width={300} 

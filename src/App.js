@@ -1,6 +1,6 @@
 import './App.css';
-// import Display1 from './Display/Display1';
-import Display2 from './Display/Display2';
+import Display1 from './Display/Display1';
+// import Display2 from './Display/Display2';
 
 function App() {
   return (
@@ -9,8 +9,8 @@ function App() {
 
      
         
-      {/* <Display1/>  */}
-      <Display2/>
+      <Display1/> 
+      {/* <Display2/> */}
     {/* <Display1/> */}
 
     </div>
