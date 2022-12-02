@@ -46,7 +46,7 @@ const Display1 = () => {
                 <caption> {style.des}</caption>
                 <tr>
                   <th>Artikel:</th>
-                  <td>{style.style.des }</td>
+                  <td>{style.style }</td>
                 </tr>
                 <tr>
               <th>Desc:</th>
@@ -126,26 +126,41 @@ const Display1 = () => {
                */}
 
 
-             {/* {(!id && style)<div><img
+             {/* {( style && !id)<div><img
             src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
             alt="images"
             height={350}
-            width={300}  /> }</div> */}
-             {  style
-            ?<img
-              src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
-              alt="images"
-              height={350}
-              width={300}
-              className="hover-zoom"
-            />  : <img
+            width={300}  /> }</div>  */}
+             {/* ( !id  || !image) || ( !style==image ) */}
+             {/* !id ||!image || !style    ------   getting image  and description on matching , but not on 
+                                           when id is not in folder and it exists in  menu  , then not getting  error image 
+             */}
+
+             {( !image || !style)
+            ? <img
             src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
             alt="images"
             height={350}
-            width={300} />} 
+            width={300} />
+
+             : <img
+             
+             src={process.env.PUBLIC_URL + `/IMAGES/${image}.jpg`}
+             alt="images"
+             height={350}
+             width={300} />} 
+
+
+
+            {/* {(!id && !image) && <div><img
+            src={process.env.PUBLIC_URL + `/IMAGES/err.jpg`}
+            alt="images"
+            height={350}
+            width={300} /></div>}  */}
           </div> 
         </div>
       </div>
+      
       {/* <p> {id?<p> {style?.name}</p> :  NO such style number exist }</p> */}
     </>
   );

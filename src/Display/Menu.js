@@ -15,7 +15,10 @@ const Menu = [
     ftst: "",
     flst: "",
     kw: "KNITTED",
+    imageName : "1",
+    
   },
+
   {
     style: "2073137        ",
     des: "V-NECK SOLID             ",
@@ -31,6 +34,7 @@ const Menu = [
     ftst: "                                    ",
     flst: "                                    ",
     kw: "KNITTED                             ",
+    imageName : "2073137",
   },
   {
     style: "2073033        ",
