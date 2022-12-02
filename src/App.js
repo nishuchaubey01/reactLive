@@ -2,8 +2,6 @@ import './App.css';
 // import Display from './Display/Display';
 import Display1 from './Display/Display1';
 
-
-
 function App() {
   return (
     <div className="App">

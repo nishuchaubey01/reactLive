@@ -15,7 +15,7 @@ const Menu = [
     ftst: "",
     flst: "",
     kw: "KNITTED",
-    imageName : "1",
+    
     
   },
 
@@ -34,7 +34,7 @@ const Menu = [
     ftst: "                                    ",
     flst: "                                    ",
     kw: "KNITTED                             ",
-    imageName : "2073137",
+    
   },
   {
     style: "2073033        ",
