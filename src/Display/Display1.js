@@ -151,7 +151,7 @@ const Display1 = () => {
 
              {!( image &&_style)
             ? <img
-            src={ `file://///BLADEW3KSVR06/Bilder//err.jpg`}
+            src={ `file://///BLADEW3KSVR06/Bilder/err.jpg`}
             alt="images"
             height={350}
             width={300} />
